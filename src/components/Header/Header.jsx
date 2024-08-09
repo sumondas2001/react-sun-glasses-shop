@@ -8,9 +8,12 @@ const Header = () => {
           <li><NavLink to={"/about"}>About</NavLink></li>
           <li><NavLink to={"/contact"}>Contact</NavLink></li>
           <li><NavLink to={"/blog"}>Blog</NavLink></li>
+
+
+
      </>
      return (
-          <div className="navbar bg-slate-800 justify-around text-xl font-bold mb-10 py-4 ">
+          <div className="navbar bg-slate-800 justify-between px-20 text-xl font-bold mb-10 py-4 ">
                <div className="navbar-start">
                     <div className="dropdown">
                          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -31,14 +34,25 @@ const Header = () => {
                               tabIndex={0}
                               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                               {navLink}
+
                          </ul>
                     </div>
                     <Link to={"/"} className=" text-4xl font-bold text-red-500">Glasses</Link>
                </div>
                <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
+
                          {navLink}
+
+
                     </ul>
+               </div>
+               <div>
+
+                    <NavLink to={"/login"}>
+                         <button>Login</button>
+                    </NavLink>
+
                </div>
 
           </div>

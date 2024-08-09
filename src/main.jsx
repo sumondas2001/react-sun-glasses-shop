@@ -10,6 +10,7 @@ import About from './Pasge/About'
 import Home from './Pasge/Home'
 import NotFound from './components/NotFound/NotFound'
 import ProductDetails from './components/ProductDetails/ProductDetails'
+import Login from './Pasge/Login/Login'
 
 
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <Products></Products>,
         loader: () => fetch(url),
 
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
       },
       {
         path: "/about",
