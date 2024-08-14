@@ -11,6 +11,7 @@ import Home from './Pasge/Home'
 import NotFound from './components/NotFound/NotFound'
 import ProductDetails from './components/ProductDetails/ProductDetails'
 import Login from './Pasge/Login/Login'
+import Register from './Register/Register'
 
 
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       },
       {
         path: "/about",
