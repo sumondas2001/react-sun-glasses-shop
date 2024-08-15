@@ -35,6 +35,12 @@ const AuthProvider = ({ children }) => {
           setLoading(true);
           return signInWithEmailAndPassword(auth, email, password);
      };
+     //user update Profile
+     const updateProfile = (name, img) => {
+          updateProfile(auth.currentUser, {
+               displayName: name, photoURL: img
+          })
+     }
      // Log out
      const logOut = () => {
           signOut(auth)
@@ -60,7 +66,8 @@ const AuthProvider = ({ children }) => {
           logOut,
           user,
           loading,
-          gitHubLogin
+          gitHubLogin,
+          updateProfile
 
      }
 
