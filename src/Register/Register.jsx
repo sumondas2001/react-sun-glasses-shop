@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Social from "../components/Social/Social";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const Register = () => {
      const { createUser } = useContext(AuthContext);
-
+     const navigate = useNavigate();
 
      const handelCreateSubmit = (event) => {
           event.preventDefault();
@@ -23,14 +23,14 @@ const Register = () => {
           // create a new User
 
           createUser(email, password)
-               .then(result => {
-                    console.log(result)
-                    toast.success('Register Successfully !');
+               .then(() => {
 
+                    toast.success('Login Successfully !');
+                    navigate("/")
 
                })
                .catch(error => {
-                    console.log(error)
+                    toast.error(error.message);
                })
      }
      return (

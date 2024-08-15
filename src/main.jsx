@@ -13,6 +13,7 @@ import ProductDetails from './components/ProductDetails/ProductDetails'
 import Login from './Pasge/Login/Login'
 import Register from './Register/Register'
 import AuthProvider from './Provider/AuthProvider'
+import PrivateRoute from './PrivateRoute/PrivateRoute'
 
 
 
@@ -52,7 +53,10 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetails></ProductDetails>,
+        element: <PrivateRoute>
+          <ProductDetails></ProductDetails>
+        </PrivateRoute>,
+
         loader: (object) => fetch(`https://my-json-server.typicode.com/faarhaan10/react-sunglasses/sunglasses/${object.params.id}`)
       }
 

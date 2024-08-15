@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Social from "../../components/Social/Social";
 import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 
 const Login = () => {
+     const navigate = useNavigate();
      const { signIn } = useContext(AuthContext);
      const handelSingIn = (event) => {
           event.preventDefault();
@@ -21,13 +22,14 @@ const Login = () => {
           // sign in a user
 
           signIn(email, password)
-               .then(result => {
-                    console.log(result.user);
+               .then(() => {
+
                     toast.success('Login Successfully !');
+                    navigate("/")
 
                })
                .catch(error => {
-                    console.log(error)
+                    toast.error(error.message);
                })
      }
      return (
