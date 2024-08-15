@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Header = () => {
+     const { user, logOut } = useContext(AuthContext);
+
+
      const navLink = <>
           <li><NavLink to={"/"}>Home</NavLink></li>
           <li><NavLink to={"/products"}>Products</NavLink></li>
@@ -13,7 +18,8 @@ const Header = () => {
 
      </>
      return (
-          <div className="navbar bg-slate-800 justify-between px-20 text-xl font-bold mb-10 py-4 ">
+          <div className="navbar bg-slate-800 px-20  justify-between text-xl font-bold mb-10 py-4 ">
+
                <div className="navbar-start">
                     <div className="dropdown">
                          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -47,15 +53,46 @@ const Header = () => {
 
                     </ul>
                </div>
-               <div>
 
-                    <NavLink to={"/login"}>
-                         <button>Login</button>
-                    </NavLink>
+               <div>
+                    {
+                         user?.email ? <div className="dropdown dropdown-end">
+                              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                   <div className="w-9 rounded-full">
+
+                                        <img src={user?.photoURL} alt={user.displayName} />
+                                   </div>
+                              </label>
+                              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                   <li>
+                                        <button className="btn btn-sm  btn-ghost">{user?.displayName || 'user name not found'}</button>
+
+                                   </li>
+                                   <li>
+                                        <button className="btn btn-sm  btn-ghost">{user?.email}</button>
+
+                                   </li>
+                                   <li>
+                                        <button
+                                             onClick={logOut}
+                                             className="btn btn-sm  btn-ghost">Logout
+                                        </button>
+
+                                   </li>
+                              </ul>
+                         </div>
+
+                              :
+
+                              <NavLink to={"/login"}>
+                                   <button>Login</button>
+                              </NavLink>
+                    }
 
                </div>
 
-          </div>
+
+          </div >
      );
 };
 

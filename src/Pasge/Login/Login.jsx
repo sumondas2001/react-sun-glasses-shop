@@ -13,6 +13,11 @@ const Login = () => {
           const email = event.target.email.value;
           const password = event.target.password.value;
 
+
+          // validation
+          if (password.length < 6) {
+               toast.error("Password should be at least 6 characters ")
+          }
           // sign in a user
 
           signIn(email, password)
