@@ -5,14 +5,17 @@ import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+const all = import.meta.env;
+
 const firebaseConfig = {
-     apiKey: "AIzaSyCcDCEptQmOSvsUsCUB4f1bH_-ipaaEoiY",
-     authDomain: "react-sun-glasses-shop.firebaseapp.com",
-     projectId: "react-sun-glasses-shop",
-     storageBucket: "react-sun-glasses-shop.appspot.com",
-     messagingSenderId: "501689504497",
-     appId: "1:501689504497:web:682752795cac1f31054f50"
+     apiKey: all.VITE_apiKey,
+     authDomain: all.VITE_authDomain,
+     projectId: all.VITE_projectId,
+     storageBucket: all.VITE_storageBucket,
+     messagingSenderId: all.VITE_messagingSenderId,
+     appId: all.VITE_appId,
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
