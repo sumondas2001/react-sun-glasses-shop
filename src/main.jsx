@@ -12,6 +12,7 @@ import NotFound from './components/NotFound/NotFound'
 import ProductDetails from './components/ProductDetails/ProductDetails'
 import Login from './Pasge/Login/Login'
 import Register from './Register/Register'
+import AuthProvider from './Provider/AuthProvider'
 
 
 
@@ -60,6 +61,8 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </StrictMode>,
 )
